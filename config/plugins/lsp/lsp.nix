@@ -16,14 +16,14 @@
         gopls = {enable = false;};
         terraformls = {enable = false;};
         texlab = {enable = true;};
-        tsserver = {enable = false;};
+        tsserver = {enable = true;};
         rust-analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
         sqls = {enable = false;};
-        yamlls = { enable = true;};
+        yamlls = {enable = true;};
         zls = {enable = false;};
       };
       keymaps = {
