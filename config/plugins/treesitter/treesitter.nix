@@ -16,7 +16,7 @@ in {
   plugins.treesitter = {
     enable = true;
     settings = {
-      indent = true;
+      indent.enable = true;
     };
     folding = true;
     languageRegister.nu = "nu";

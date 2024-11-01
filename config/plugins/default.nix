@@ -1,13 +1,13 @@
 {
   imports = [
-    ./colorscheme 
-    ./completion 
-    ./git 
-    ./lsp 
-    ./snippets 
-    ./statusline 
-    ./treesitter 
-    ./ui 
+    ./colorscheme
+    ./completion
+    ./git
+    ./lsp
+    ./snippets
+    ./statusline
+    ./treesitter
+    ./ui
     ./utils
   ];
 }
