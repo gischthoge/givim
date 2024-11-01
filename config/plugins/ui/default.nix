@@ -1,11 +1,12 @@
 {
   imports = [
-#    ./alpha.nix
+    #    ./alpha.nix
     ./btw.nix
     ./bufferline.nix
     ./noice.nix
     ./nvim-notify.nix
     ./nvim-tree.nix
     ./telescope.nix
+    ./web-devicons.nix
   ];
 }

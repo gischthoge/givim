@@ -16,8 +16,8 @@
         gopls = {enable = false;};
         terraformls = {enable = false;};
         texlab = {enable = true;};
-        tsserver = {enable = true;};
-        rust-analyzer = {
+        ts-ls = {enable = true;};
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
