@@ -1,6 +1,7 @@
 {
   plugins.flash = {
     enable = true;
+    settings = {
     labels = "asdfghjklqwertyuiopzxcvbnm";
     search = {
       mode = "fuzzy";
@@ -15,6 +16,7 @@
         shade = 5;
       };
     };
+  };
   };
   keymaps = [
     {

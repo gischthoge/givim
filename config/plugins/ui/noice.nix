@@ -1,6 +1,7 @@
 {
   plugins.noice = {
     enable = true;
+    settings = {
     notify = {
       enabled = false;
     };
@@ -31,6 +32,7 @@
         icon = "󱞪";
         lang = "regex";
       };
+    };
     };
   };
 }

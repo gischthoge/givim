@@ -1,7 +1,8 @@
 {
   plugins.conform-nvim = {
     enable = true;
-    settings.formatOnSave = {
+    settings = {
+      formatOnSave = {
       lspFallback = true;
       timeoutMs = 500;
     };
@@ -20,5 +21,6 @@
       markdown = [["prettierd" "prettier"]];
       yaml = ["yamllint" "yamlfmt"];
     };
+  };
   };
 }

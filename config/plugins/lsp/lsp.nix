@@ -8,15 +8,15 @@
         elixirls = {enable = false;};
         html = {enable = false;};
         gleam = {enable = false;};
-        lua-ls = {enable = true;};
-        nil-ls = {enable = true;};
+        lua_ls = {enable = true;};
+        nil_ls = {enable = true;};
         nixd = {enable = true;};
         marksman = {enable = true;};
         pyright = {enable = true;};
         gopls = {enable = false;};
         terraformls = {enable = false;};
         texlab = {enable = true;};
-        ts-ls = {enable = true;};
+        ts_ls = {enable = true;};
         rust_analyzer = {
           enable = true;
           installCargo = false;
