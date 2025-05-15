@@ -25,11 +25,11 @@
       categoryDefinitions = import ./nix/categories.nix;
 
       packageDefinitions = {
-        nixCats = import ./nix/packageDefinitions/nixCats.nix;
+        givim = import ./nix/packageDefinitions/nixCats.nix;
         regularCats = import ./nix/packageDefinitions/regularCats.nix;
       };
 
-      defaultPackageName = "nixCats";
+      defaultPackageName = "givim";
     in forEachSystem (system:
       let
         nixCatsBuilder = utils.baseBuilder luaPath {
