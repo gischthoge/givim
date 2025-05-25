@@ -6,21 +6,43 @@ vim.g.maplocalleader = '\\'
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.g.clipboard = {
+  name = "wl-clipboard (Wayland)",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy",
+  },
+  paste = {
+    ["+"] = "wl-paste --no-newline",
+    ["*"] = "wl-paste --no-newline",
+  },
+  cache_enabled = true,
+}
+
+
+local opt = vim.opt
+
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+opt.list = true
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.confirm = true
+opt.cursorline = true
 
 -- Set highlight on search
-vim.opt.hlsearch = true
+opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+opt.inccommand = 'split'
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+opt.scrolloff = 10
 
 -- Make line numbers default
 vim.wo.number = true
@@ -32,11 +54,12 @@ vim.o.mouse = 'a'
 -- vim.o.smarttab = true
 vim.opt.cpoptions:append('I')
 vim.o.expandtab = true
--- vim.o.smartindent = true
+vim.o.smartindent = true
 -- vim.o.autoindent = true
--- vim.o.tabstop = 4
+vim.o.tabstop = 2
 -- vim.o.softtabstop = 4
--- vim.o.shiftwidth = 4
+vim.o.shiftwidth = 2 -- Size of an indent
+opt.shiftround = true -- Round indent
 
 -- stops line wrapping from being confusing
 vim.o.breakindent = true

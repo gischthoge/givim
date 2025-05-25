@@ -79,6 +79,7 @@
         nvim-surround
         snacks-nvim
         neo-tree-nvim
+        vim-wayland-clipboard
       ];
       extra = with pkgs.vimPlugins; [
         fidget-nvim

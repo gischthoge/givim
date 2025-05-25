@@ -10,7 +10,8 @@
   };
 
   # see :help nixCats.flake.outputs
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       inherit (inputs.nixCats) utils;
       luaPath = "${./.}";
@@ -30,43 +31,69 @@
       };
 
       defaultPackageName = "givim";
-    in forEachSystem (system:
+    in
+    forEachSystem (
+      system:
       let
         nixCatsBuilder = utils.baseBuilder luaPath {
-          inherit nixpkgs system dependencyOverlays extra_pkg_config;
+          inherit
+            nixpkgs
+            system
+            dependencyOverlays
+            extra_pkg_config
+            ;
         } categoryDefinitions packageDefinitions;
         defaultPackage = nixCatsBuilder defaultPackageName;
 
         pkgs = import nixpkgs { inherit system; };
-      in {
+      in
+      {
         packages = utils.mkAllWithDefault defaultPackage;
         devShells = {
           default = pkgs.mkShell {
             name = defaultPackageName;
-            packages = with pkgs; [ 
+            packages = with pkgs; [
               defaultPackage
-              lua-language-server 
-              nil 
-              stylua 
-              alejandra 
-            ] ;
+              lua-language-server
+              nil
+              stylua
+              nixfmt-rfc-style
+            ];
             inputsFrom = [ ];
             shellHook = "";
           };
         };
 
-      }) // (let
+      }
+    )
+    // (
+      let
         nixosModule = utils.mkNixosModules {
           moduleNamespace = [ defaultPackageName ];
-          inherit defaultPackageName dependencyOverlays luaPath
-            categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
+          inherit
+            defaultPackageName
+            dependencyOverlays
+            luaPath
+            categoryDefinitions
+            packageDefinitions
+            extra_pkg_config
+            nixpkgs
+            ;
         };
         homeModule = utils.mkHomeModules {
           moduleNamespace = [ defaultPackageName ];
-          inherit defaultPackageName dependencyOverlays luaPath
-            categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
+          inherit
+            defaultPackageName
+            dependencyOverlays
+            luaPath
+            categoryDefinitions
+            packageDefinitions
+            extra_pkg_config
+            nixpkgs
+            ;
         };
-      in {
+      in
+      {
         # these outputs will be NOT wrapped with ${system}
         overlays = utils.makeOverlays luaPath {
           inherit nixpkgs dependencyOverlays extra_pkg_config;
@@ -77,5 +104,6 @@
 
         inherit utils nixosModule homeModule;
         inherit (utils) templates;
-      });
+      }
+    );
 }
